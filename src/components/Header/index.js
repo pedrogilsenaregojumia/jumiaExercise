@@ -1,11 +1,22 @@
 import React from "react";
-import Typography from "@mui/material/Typography";
+import { makeStyles } from "@mui/styles";
+import { Typography, Container } from "@mui/material";
+
+const useStyles = makeStyles({
+  header: {
+    paddingTop: "40px",
+  },
+});
 
 const Header = () => {
+  const classes = useStyles();
+
   return (
-    <div>
-      <Typography variant="h6">TODO App</Typography>
-    </div>
+    <Container>
+      <Typography variant="h3" className={classes.header}>
+        TODO App
+      </Typography>
+    </Container>
   );
 };
 

@@ -15,7 +15,7 @@ const Task = ({ item, pos, tasks }) => {
   return (
     <Grid item xs={12}>
       <Paper>
-        <Grid container>
+        <Grid container alignItems="center" justifyContent="center">
           <Grid item xs={9}>
             <Typography>{item}</Typography>
           </Grid>

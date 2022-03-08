@@ -6,9 +6,11 @@ import { addTaskStart } from "../../redux/Tasks/tasks.actions";
 import Paper from "@mui/material/Paper";
 
 const useStyles = makeStyles({
-  inputsContainer: {
-    paddingTop: "10vh",
-    paddingBottom: "10vh",
+  mainContainer: {
+    padding: "20px",
+  },
+  addTaskContainer: {
+    paddingTop: "20px",
   },
 });
 
@@ -28,13 +30,19 @@ const AddTask = ({ tasks }) => {
   };
 
   return (
-    <Paper>
+    <Paper className={classes.mainContainer}>
       <Typography variant="h4">Add New Task</Typography>
-      <Grid container spacing={2} className={classes.inputsContainer}>
-        <Grid item xs={12}>
+      <Grid
+        container
+        spacing={2}
+        alignItems="center"
+        justifyContent="center"
+        className={classes.addTaskContainer}
+      >
+        <Grid item xs={8}>
           <TextField label="Title" variant="outlined" onChange={handleTitle} />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item xs={4}>
           <Button variant="outlined" onClick={handleAddTask}>
             Add+
           </Button>
