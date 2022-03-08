@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Grid, Typography, Paper, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Task from "./Task";
@@ -13,11 +13,15 @@ const useStyles = makeStyles({
   tasksContainer: {
     paddingTop: "20px",
   },
+  devDeletes: {
+    color: "red",
+  },
 });
 
 const ListOfTasks = ({ tasks }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
+  const [deleteStatus, setDeleteStatus] = useState(null);
 
   const handleClearTasks = () => {
     dispatch(clearTasksStart());
@@ -34,6 +38,13 @@ const ListOfTasks = ({ tasks }) => {
             Clear Tasks
           </Button>
         </Grid>
+        {deleteStatus && (
+          <Grid item xs={12}>
+            <Typography className={classes.devDeletes}>
+              {deleteStatus}
+            </Typography>
+          </Grid>
+        )}
 
         <PaginationC />
 
@@ -47,7 +58,12 @@ const ListOfTasks = ({ tasks }) => {
         >
           {tasks &&
             tasks.map((item, pos) => {
-              return <Task item={item} key={pos} />;
+              const configItem = {
+                item: item,
+                deleteStatus,
+                setDeleteStatus,
+              };
+              return <Task {...configItem} key={pos} />;
             })}
         </Grid>
       </Grid>
