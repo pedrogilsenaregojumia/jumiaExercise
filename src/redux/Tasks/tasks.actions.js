@@ -5,6 +5,11 @@ export const addTasksStart = (tasksData) => ({
   payload: tasksData,
 });
 
+export const setCountStart = (count) => ({
+  type: tasksTypes.SET_COUNT_START,
+  payload: count,
+});
+
 export const addTaskStart = (tasksData) => ({
   type: tasksTypes.ADD_TASK_START,
   payload: tasksData,

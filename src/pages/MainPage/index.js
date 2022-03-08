@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import { makeStyles } from "@mui/styles";
 import { useSelector } from "react-redux";
 import Grid from "@mui/material/Grid";
-import { addTasksStart } from "../../redux/Tasks/tasks.actions";
+import { addTasksStart, setCountStart } from "../../redux/Tasks/tasks.actions";
 
 import mokTasks from "../../data/mokTasks.json";
 
@@ -33,10 +33,15 @@ const MainPage = () => {
     try {
       const response = await axios.get(`https://toDefine`);
       const data = response.data;
+      const count = response.meta.count;
+      dispatch(setCountStart(count));
       dispatch(addTasksStart(data));
     } catch {
       setDevEndpoint(true);
-      dispatch(addTasksStart(mokTasks));
+      const mokData = mokTasks.data;
+      const mokCount = mokTasks.meta.count;
+      dispatch(setCountStart(mokCount));
+      dispatch(addTasksStart(mokData));
     }
   };
 

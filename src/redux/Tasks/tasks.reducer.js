@@ -3,6 +3,7 @@ import { handleRemoveTask, handleAddTask } from "./tasks.utils";
 
 const INITIAL_STATE = {
   tasks: [],
+  count: 1,
 };
 
 const placesReducer = (state = INITIAL_STATE, action) => {
@@ -11,6 +12,12 @@ const placesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         tasks: action.payload,
+      };
+
+    case tasksTypes.SET_COUNT_START:
+      return {
+        ...state,
+        count: action.payload,
       };
 
     case tasksTypes.ADD_TASK_START:

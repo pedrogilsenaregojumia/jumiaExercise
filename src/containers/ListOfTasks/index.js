@@ -2,6 +2,7 @@ import React from "react";
 import { Grid, Typography, Paper, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
 import Task from "./Task";
+import PaginationC from "./PaginationC";
 import { useDispatch } from "react-redux";
 import { clearTasksStart } from "../../redux/Tasks/tasks.actions";
 
@@ -33,6 +34,9 @@ const ListOfTasks = ({ tasks }) => {
             Clear Tasks
           </Button>
         </Grid>
+
+        <PaginationC />
+
         <Grid
           item
           xs={12}
