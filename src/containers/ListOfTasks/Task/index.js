@@ -3,13 +3,11 @@ import { useDispatch } from "react-redux";
 import { Grid, Paper, Typography, Button } from "@mui/material";
 import { removeTaskStart } from "../../../redux/Tasks/tasks.actions";
 
-const Task = ({ item, pos, tasks }) => {
+const Task = ({ item }) => {
   const dispatch = useDispatch();
 
   const handleDeleteTask = () => {
-    const newTasksArray = [...tasks];
-    newTasksArray.splice(pos, 1);
-    dispatch(removeTaskStart(newTasksArray));
+    dispatch(removeTaskStart(item));
   };
 
   return (

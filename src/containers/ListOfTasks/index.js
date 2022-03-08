@@ -43,7 +43,7 @@ const ListOfTasks = ({ tasks }) => {
         >
           {tasks &&
             tasks.map((item, pos) => {
-              return <Task item={item} key={pos} tasks={tasks} />;
+              return <Task item={item} key={pos} />;
             })}
         </Grid>
       </Grid>

@@ -1,7 +1,8 @@
 export const handleRemoveTask = ({ prevTasks, taskToRemove }) => {
-  return prevTasks.splice(taskToRemove, 1);
+  return (prevTasks = prevTasks.filter((e) => e !== taskToRemove));
 };
 
 export const handleAddTask = ({ prevTasks, taskToAdd }) => {
-  return [prevTasks.push(taskToAdd)];
+  prevTasks.push(taskToAdd);
+  return prevTasks;
 };

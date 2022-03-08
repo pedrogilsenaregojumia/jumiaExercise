@@ -1,4 +1,5 @@
 import tasksTypes from "./tasks.types";
+import { handleRemoveTask, handleAddTask } from "./tasks.utils";
 
 const INITIAL_STATE = {
   tasks: [],
@@ -9,17 +10,24 @@ const placesReducer = (state = INITIAL_STATE, action) => {
     case tasksTypes.ADD_TASK_START:
       return {
         ...state,
-        tasks: action.payload,
+        tasks: handleAddTask({
+          prevTasks: state.tasks,
+          taskToAdd: action.payload,
+        }),
       };
 
     case tasksTypes.REMOVE_TASK_START:
       return {
         ...state,
-        tasks: action.payload,
+        tasks: handleRemoveTask({
+          prevTasks: state.tasks,
+          taskToRemove: action.payload,
+        }),
       };
 
     case tasksTypes.CLEAR_TASKS:
       return {
+        ...state,
         ...INITIAL_STATE,
       };
 

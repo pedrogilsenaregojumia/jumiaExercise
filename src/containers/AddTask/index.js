@@ -24,9 +24,7 @@ const AddTask = ({ tasks }) => {
   };
 
   const handleAddTask = () => {
-    const newTasksArray = [...tasks];
-    newTasksArray.push(title);
-    dispatch(addTaskStart(newTasksArray));
+    dispatch(addTaskStart(title));
   };
 
   return (
