@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@mui/styles";
 import { useSelector } from "react-redux";
@@ -7,6 +8,7 @@ import Grid from "@mui/material/Grid";
 import { addTasksStart, setCountStart } from "../../redux/Tasks/tasks.actions";
 
 import mokTasks from "../../data/mokTasks.json";
+import mokTasks2 from "../../data/mokTasks2.json";
 
 import Header from "../../components/Header";
 import ListOfTasks from "../../containers/ListOfTasks";
@@ -26,19 +28,22 @@ const useStyles = makeStyles({
 const MainPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const { pageID } = useParams();
   const { tasks } = useSelector(mapState);
   const [devEndpoint, setDevEndpoint] = useState(false);
 
+  const ENDPOINT = "https://toDefine" + pageID;
+
   const getTasks = async () => {
     try {
-      const response = await axios.get(`https://toDefine`);
+      const response = await axios.get(ENDPOINT);
       const data = response.data;
       const count = response.meta.count;
       dispatch(setCountStart(count));
       dispatch(addTasksStart(data));
     } catch {
       setDevEndpoint(true);
-      const mokData = mokTasks.data;
+      const mokData = pageID === "/&page=2" ? mokTasks.data : mokTasks2.data;
       const mokCount = mokTasks.meta.count;
       dispatch(setCountStart(mokCount));
       dispatch(addTasksStart(mokData));

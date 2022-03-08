@@ -4,6 +4,7 @@ import { handleRemoveTask, handleAddTask } from "./tasks.utils";
 const INITIAL_STATE = {
   tasks: [],
   count: 1,
+  page: 1,
 };
 
 const placesReducer = (state = INITIAL_STATE, action) => {
@@ -18,6 +19,11 @@ const placesReducer = (state = INITIAL_STATE, action) => {
       return {
         ...state,
         count: action.payload,
+      };
+    case tasksTypes.SET_PAGE_START:
+      return {
+        ...state,
+        page: action.payload,
       };
 
     case tasksTypes.ADD_TASK_START:

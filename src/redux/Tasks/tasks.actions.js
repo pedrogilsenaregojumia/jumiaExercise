@@ -10,6 +10,11 @@ export const setCountStart = (count) => ({
   payload: count,
 });
 
+export const setPageStart = (page) => ({
+  type: tasksTypes.SET_PAGE_START,
+  payload: page,
+});
+
 export const addTaskStart = (tasksData) => ({
   type: tasksTypes.ADD_TASK_START,
   payload: tasksData,

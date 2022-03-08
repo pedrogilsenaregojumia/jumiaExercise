@@ -4,6 +4,7 @@ const tasksTypes = {
   REMOVE_TASK_START: "REMOVE_TASK_START",
   CLEAR_TASKS: "CLEAR_TASKS",
   SET_COUNT_START: "SET_COUNT_START",
+  SET_PAGE_START: "SET_PAGE_START",
 };
 
 export default tasksTypes;
