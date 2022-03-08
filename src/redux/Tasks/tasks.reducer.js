@@ -28,7 +28,7 @@ const placesReducer = (state = INITIAL_STATE, action) => {
     case tasksTypes.CLEAR_TASKS:
       return {
         ...state,
-        ...INITIAL_STATE,
+        tasks: [],
       };
 
     default:
