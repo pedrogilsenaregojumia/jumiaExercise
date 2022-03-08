@@ -7,6 +7,12 @@ const INITIAL_STATE = {
 
 const placesReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
+    case tasksTypes.ADD_TASKS_START:
+      return {
+        ...state,
+        tasks: action.payload,
+      };
+
     case tasksTypes.ADD_TASK_START:
       return {
         ...state,

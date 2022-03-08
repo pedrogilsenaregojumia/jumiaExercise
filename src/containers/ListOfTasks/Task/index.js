@@ -12,10 +12,10 @@ const Task = ({ item }) => {
 
   return (
     <Grid item xs={12}>
-      <Paper>
+      <Paper draggable={true}>
         <Grid container alignItems="center" justifyContent="center">
           <Grid item xs={9}>
-            <Typography>{item}</Typography>
+            <Typography>{item.title}</Typography>
           </Grid>
           <Grid item xs={3}>
             <Button onClick={handleDeleteTask}>Delete</Button>

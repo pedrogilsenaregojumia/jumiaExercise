@@ -6,9 +6,12 @@ const useStyles = makeStyles({
   header: {
     paddingTop: "40px",
   },
+  devEndpoint: {
+    color: "red",
+  },
 });
 
-const Header = () => {
+const Header = ({ devEndpoint }) => {
   const classes = useStyles();
 
   return (
@@ -16,6 +19,11 @@ const Header = () => {
       <Typography variant="h3" className={classes.header}>
         TODO App
       </Typography>
+      {devEndpoint && (
+        <Typography variant="h6" className={classes.devEndpoint}>
+          Development Endpoint Mode
+        </Typography>
+      )}
     </Container>
   );
 };
