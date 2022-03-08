@@ -43,7 +43,7 @@ const MainPage = () => {
       dispatch(addTasksStart(data));
     } catch {
       setDevEndpoint(true);
-      const mokData = pageID === "/&page=2" ? mokTasks.data : mokTasks2.data;
+      const mokData = pageID === "&page=2" ? mokTasks.data : mokTasks2.data;
       const mokCount = mokTasks.meta.count;
       dispatch(setCountStart(mokCount));
       dispatch(addTasksStart(mokData));
@@ -55,7 +55,7 @@ const MainPage = () => {
       getTasks();
     },
     //eslint-disable-next-line
-    []
+    [pageID]
   );
 
   return (
