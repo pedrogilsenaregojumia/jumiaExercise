@@ -16,7 +16,7 @@ const Task = ({ item, setDeleteStatus }) => {
       });
       setDeleteStatus("Delete Sucessfull");
     } catch (error) {
-      setDeleteStatus("Delete Failed only done locally");
+      setDeleteStatus("Delete Failed, only done locally");
     }
   };
 
