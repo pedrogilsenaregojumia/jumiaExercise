@@ -16,11 +16,15 @@ const Header = ({ devEndpoint }) => {
 
   return (
     <Container>
-      <Typography variant="h3" className={classes.header}>
+      <Typography data-testid="header" variant="h3" className={classes.header}>
         TODO App
       </Typography>
       {devEndpoint && (
-        <Typography variant="h6" className={classes.devEndpoint}>
+        <Typography
+          data-testid="dev-endpoint-header"
+          variant="h6"
+          className={classes.devEndpoint}
+        >
           Development Endpoint Mode
         </Typography>
       )}
