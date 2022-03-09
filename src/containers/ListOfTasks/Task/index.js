@@ -30,7 +30,7 @@ const Task = ({ item, setDeleteStatus }) => {
       <Paper draggable={true}>
         <Grid container alignItems="center" justifyContent="center">
           <Grid item xs={9}>
-            <Typography>{item.title}</Typography>
+            <Typography>{item.title} - {item.category.name}</Typography>
           </Grid>
           <Grid item xs={3}>
             <Button onClick={handleDeleteTask}>Delete</Button>

@@ -2,43 +2,84 @@
   "data": [
     {
       "title": "Ir às compras",
-      "detail": "lista de compras: ovos, farinha, carne"
+      "detail": "lista de compras: ovos, farinha, carne",
+      "category": {
+        "ID":1,
+        "name":"pessoal"
+      }
     },
     {
       "title": "Passar no cabeleireiro",
-      "detail": "não esquecer de pagar o champo que levei da outra vez"
+      "detail": "não esquecer de pagar o champo que levei da outra vez",
+      "category": {
+        "ID":1,
+        "name":"pessoal"
+      }
     },
     {
       "title": "Dar banho ao cao",
-      "detail": "O zorba não gosta de molhar as orelhas durante o processo"
+      "detail": "O zorba não gosta de molhar as orelhas durante o processo",
+      
+      "category": {
+        "ID":1,
+        "name":"pessoal"
+      }
     },
     {
       "title": "Ir às compras",
-      "detail": "lista de compras: ovos, farinha, carne"
+      "detail": "lista de compras: ovos, farinha, carne",
+      "category": {
+        "ID":1,
+        "name":"pessoal"
+      }
     },
     {
       "title": "Passar no cabeleireiro",
-      "detail": "não esquecer de pagar o champo que levei da outra vez"
+      "detail": "não esquecer de pagar o champo que levei da outra vez",
+      "category": {
+        "ID":1,
+        "name":"pessoal"
+      }
     },
     {
       "title": "Dar banho ao cao",
-      "detail": "O zorba não gosta de molhar as orelhas durante o processo"
+      "detail": "O zorba não gosta de molhar as orelhas durante o processo",
+      "category": {
+        "ID":1,
+        "name":"pessoal"
+      }
     },
     {
       "title": "Ir às compras",
-      "detail": "lista de compras: ovos, farinha, carne"
+      "detail": "lista de compras: ovos, farinha, carne",
+      "category": {
+        "ID":1,
+        "name":"pessoal"
+      }
     },
     {
       "title": "Passar no cabeleireiro",
-      "detail": "não esquecer de pagar o champo que levei da outra vez"
+      "detail": "não esquecer de pagar o champo que levei da outra vez",
+      "category": {
+        "ID":1,
+        "name":"pessoal"
+      }
     },
     {
       "title": "Dar banho ao cao",
-      "detail": "O zorba não gosta de molhar as orelhas durante o processo"
+      "detail": "O zorba não gosta de molhar as orelhas durante o processo",
+      "category": {
+        "ID":1,
+        "name":"pessoal"
+      }
     },
     {
       "title": "Dar banho ao cao",
-      "detail": "O zorba não gosta de molhar as orelhas durante o processo"
+      "detail": "O zorba não gosta de molhar as orelhas durante o processo",
+      "category": {
+        "ID":1,
+        "name":"pessoal"
+      }
     }
   ],
   "meta": {
