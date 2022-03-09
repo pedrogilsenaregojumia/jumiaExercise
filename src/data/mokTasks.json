@@ -2,7 +2,11 @@
   "data": [
     {
       "title": "Ir às compras",
-      "detail": "lista de compras: ovos, farinha, carne"
+      "detail": "lista de compras: ovos, farinha, carne",
+      "category": {
+        "ID":1,
+        "name":"pessoal"
+      }
     },
     {
       "title": "Passar no cabeleireiro",
