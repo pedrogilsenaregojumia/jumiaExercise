@@ -16,9 +16,9 @@ const TableOfTasks = () => {
     return (
         <TableContainer component={Paper} ><Table ><TableHead>
         <TableRow>
-          <TableCell>Tasks</TableCell>
-          <TableCell align="right">Details</TableCell>
-          <TableCell align="right">Category</TableCell>
+          <TableCell><b>Tasks</b></TableCell>
+          <TableCell align="right"><b>Details</b></TableCell>
+          <TableCell align="right"><b>Category</b></TableCell>
         </TableRow>
       </TableHead>
       <TableBody>
