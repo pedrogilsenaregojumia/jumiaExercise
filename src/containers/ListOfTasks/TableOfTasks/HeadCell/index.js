@@ -4,7 +4,7 @@ import { TableCell } from "@mui/material"
 import {AiOutlineArrowUp,AiOutlineArrowDown } from "react-icons/ai"
 
 const HeadCell = (props) => {
-    const { element, title, sorting, setSorting, InitialSort} = props
+    const { element, title, sorting, setSorting, InitialSort, setWhichSort} = props
     const [over, setOver] = useState(false)
     
 
@@ -14,7 +14,7 @@ const HeadCell = (props) => {
     }
 
     const handleClick = () => {
-        if(sorting[element]===null) setSorting({...InitialSort, [element]:"desc"})
+        if(sorting[element]===null) {setSorting({...InitialSort, [element]:"desc"});setWhichSort(element)}
         else {setSorting({...sorting, [element]:directionTurn()})}
 
     }

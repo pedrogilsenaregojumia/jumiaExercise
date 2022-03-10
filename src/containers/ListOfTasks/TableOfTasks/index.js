@@ -15,18 +15,26 @@ const mapState = (state) => ({
 
 const TableOfTasks = () => {
     const { tasks } = useSelector(mapState); 
-    const [sorting, setSorting] = useState({...InitialSort})
+    const [whichSort, setWhichSort] = useState("tasks")
+    const [sorting, setSorting] = useState({...InitialSort, tasks: "desc"})
     const [endpoint, setEndpoint] = useState("https://jumiaTestEndpoint/view=full&task=desc&per_page=10")
 
-    useEffect(()=>{defineEndpointSorting()},[sorting])
+    useEffect(()=>{defineEndpointSorting()},[sorting, whichSort])
+
+
 
     const defineEndpointSorting = () => {
-
+        const perPage = "&per_page=10"
+        const view = "view=full"
+        const sortingV = `&${whichSort}=${sorting[whichSort]}`
+        setEndpoint(`https://jumiaTestEndpoint/${view}${sortingV}${perPage}`)
     }
 
     const configHeadCell = {
-        sorting, setSorting, 
-        InitialSort
+        sorting,
+        setSorting, 
+        InitialSort,
+        setWhichSort
     }
 
     return (
