@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from "react"
+import { useHistory } from "react-router-dom";
 import { TableContainer, Table, TableHead, TableRow, TableBody, Paper, TableCell } from "@mui/material";
 import HeadCell from "./HeadCell";
 import { useSelector } from "react-redux";
@@ -13,21 +14,26 @@ const mapState = (state) => ({
     category: null
 }
 
-const TableOfTasks = () => {
+const TableOfTasks = ({setEndpoint, search}) => {
+    const history=useHistory()
     const { tasks } = useSelector(mapState); 
     const [whichSort, setWhichSort] = useState("tasks")
     const [sorting, setSorting] = useState({...InitialSort, tasks: "desc"})
-    const [endpoint, setEndpoint] = useState("https://jumiaTestEndpoint/view=full&task=desc&per_page=10")
-
-    useEffect(()=>{defineEndpointSorting()},[sorting, whichSort])
+    
+    useEffect(()=>{defineEndpointSorting()},
+    // eslint-disable-next-line
+    [sorting, whichSort])
 
 
 
     const defineEndpointSorting = () => {
         const perPage = "&per_page=10"
         const view = "view=full"
-        const sortingV = `&${whichSort}=${sorting[whichSort]}`
-        setEndpoint(`https://jumiaTestEndpoint/${view}${sortingV}${perPage}`)
+        const sortBy = `&sort_by=${whichSort}`
+        const byOrder = `&by_order=${sorting[whichSort]}`
+        const newEndPoint = `${view}${sortBy}${byOrder}${perPage}`
+        setEndpoint(newEndPoint)
+        history.push(newEndPoint+`${search}`)
     }
 
     const configHeadCell = {
@@ -39,7 +45,7 @@ const TableOfTasks = () => {
 
     return (
         <TableContainer component={Paper} >
-            {endpoint}<Table ><TableHead>
+            <Table ><TableHead>
         <TableRow>
           <HeadCell element="tasks" title="Tasks" {...configHeadCell}/>
           <HeadCell element="details" title="Details" {...configHeadCell} align="right"/>

@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { makeStyles } from "@mui/styles";
-import { useSelector } from "react-redux";
+
 import Grid from "@mui/material/Grid";
 import { addTasksStart, setCountStart } from "../../redux/Tasks/tasks.actions";
 
@@ -13,11 +13,10 @@ import mokTasks2 from "../../data/mokTasks2.json";
 import Header from "../../components/Header";
 import ListOfTasks from "../../containers/ListOfTasks";
 import Container from "@mui/material/Container";
-import AddTask from "../../containers/AddTask";
+import KeywordSearch from "../../containers/KeywordSearch";
 
-const mapState = (state) => ({
-  tasks: state.tasksData.tasks,
-});
+
+
 
 const useStyles = makeStyles({
   mainContainer: {
@@ -29,8 +28,10 @@ const MainPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { pageID } = useParams();
-  const { tasks } = useSelector(mapState);
+  
   const [devEndpoint, setDevEndpoint] = useState(false);
+  const [search, setSearch] = useState("");
+  const [endpoint, setEndpoint] = useState("")
 
   const ENDPOINT = "https://toDefine" + pageID;
 
@@ -59,6 +60,7 @@ const MainPage = () => {
     return newArray    
   }
 
+
   useEffect(
     () => {
       getTasks();
@@ -67,16 +69,30 @@ const MainPage = () => {
     [pageID]
   );
 
+  const configListOfTasks = {
+    endpoint, 
+    setEndpoint,
+    search
+  }
+
+  const configSearch = {
+    endpoint,
+    setEndpoint,
+    search, 
+    setSearch
+  }
+
   return (
     <div>
       <Header devEndpoint={devEndpoint} />
+
       <Container className={classes.mainContainer}>
         <Grid container spacing={2}>
         <Grid item xs={12} >
-            <AddTask tasks={tasks} />
+            <KeywordSearch  {...configSearch}/>
           </Grid>
           <Grid item xs={12} >
-            <ListOfTasks tasks={tasks} />
+            <ListOfTasks {...configListOfTasks} />
           </Grid>
           
         </Grid>

@@ -17,9 +17,13 @@ const useStyles = makeStyles({
   
 });
 
-const ListOfTasks = () => {
+const ListOfTasks = ({endpoint, setEndpoint, search}) => {
  
   const classes = useStyles();
+
+  const configTableOfTasks = {
+    endpoint, setEndpoint, search
+  }
 
   return (
     <Paper className={classes.mainContainer}>
@@ -30,7 +34,7 @@ const ListOfTasks = () => {
         
        
 
-        <TableOfTasks/>
+        <TableOfTasks {...configTableOfTasks}/>
 
         <PaginationC />
 
