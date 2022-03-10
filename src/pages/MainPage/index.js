@@ -43,12 +43,21 @@ const MainPage = () => {
       dispatch(addTasksStart(data));
     } catch {
       setDevEndpoint(true);
-      const mokData = pageID === "&page=2" ? mokTasks.data : mokTasks2.data;
+      const mokData = pageID === "&page=2" ? tasksNormalization(mokTasks.data) : tasksNormalization(mokTasks2.data);
       const mokCount = mokTasks.meta.count;
       dispatch(setCountStart(mokCount));
       dispatch(addTasksStart(mokData));
+      console.log("NormalizedData:", tasksNormalization(mokTasks2.data))
     }
   };
+
+  const tasksNormalization = (data) => {
+    const newArray = []
+    for (let i=0;i<data.length;i++){
+    const entry = {title: data[i].title, detail: data[i].detail, category: data[i].category.name}
+    newArray.push(entry)}
+    return newArray    
+  }
 
   useEffect(
     () => {
@@ -63,10 +72,10 @@ const MainPage = () => {
       <Header devEndpoint={devEndpoint} />
       <Container className={classes.mainContainer}>
         <Grid container spacing={2}>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={8}>
             <ListOfTasks tasks={tasks} />
           </Grid>
-          <Grid item xs={12} md={6}>
+          <Grid item xs={12} md={4}>
             <AddTask tasks={tasks} />
           </Grid>
         </Grid>

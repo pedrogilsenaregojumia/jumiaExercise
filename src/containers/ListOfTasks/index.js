@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { Grid, Typography, Paper, Button } from "@mui/material";
 import { makeStyles } from "@mui/styles";
-import Task from "./Task";
+
 import PaginationC from "./PaginationC";
+import TableOfTasks from "./TableOfTasks";
 import { useDispatch } from "react-redux";
 import { clearTasksStart } from "../../redux/Tasks/tasks.actions";
 
@@ -21,7 +22,7 @@ const useStyles = makeStyles({
 const ListOfTasks = ({ tasks }) => {
   const dispatch = useDispatch();
   const classes = useStyles();
-  const [deleteStatus, setDeleteStatus] = useState(null);
+
 
   const handleClearTasks = () => {
     dispatch(clearTasksStart());
@@ -38,34 +39,13 @@ const ListOfTasks = ({ tasks }) => {
             Clear Tasks
           </Button>
         </Grid>
-        {deleteStatus && (
-          <Grid item xs={12}>
-            <Typography className={classes.devDeletes}>
-              {deleteStatus}
-            </Typography>
-          </Grid>
-        )}
+       
+
+        <TableOfTasks/>
 
         <PaginationC />
 
-        <Grid
-          item
-          xs={12}
-          container
-          spacing={2}
-          direction="row"
-          className={classes.tasksContainer}
-        >
-          {tasks &&
-            tasks.map((item, pos) => {
-              const configItem = {
-                item: item,
-                deleteStatus,
-                setDeleteStatus,
-              };
-              return <Task {...configItem} key={pos} />;
-            })}
-        </Grid>
+       
       </Grid>
     </Paper>
   );
