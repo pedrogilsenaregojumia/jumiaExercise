@@ -57,15 +57,22 @@ const TableOfTasks = ({ setEndpoint, search }) => {
     <TableContainer component={Paper} data-testid="table">
       <Table>
         <TableHead>
-          <TableRow>
-            <HeadCell element="tasks" title="Tasks" {...configHeadCell} />
+          <TableRow data-testid="header">
             <HeadCell
+              data-testid="head-cell"
+              element="tasks"
+              title="Tasks"
+              {...configHeadCell}
+            />
+            <HeadCell
+              data-testid="head-cell"
               element="details"
               title="Details"
               {...configHeadCell}
               align="right"
             />
             <HeadCell
+              data-testid="head-cell"
               element="category"
               title="Category"
               {...configHeadCell}

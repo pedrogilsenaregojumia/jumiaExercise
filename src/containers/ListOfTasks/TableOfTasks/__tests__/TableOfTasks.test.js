@@ -17,6 +17,16 @@ test("should render Table component", () => {
       <TableOfTasks setEndpoint={setEndpoint} />
     </Router>
   );
-  const mainElement = screen.getByTestId(`table`);
-  expect(mainElement).toBeInTheDocument();
+
+  const mainTable = screen.getByTestId(`table`);
+  expect(mainTable).toBeInTheDocument();
+
+  const header = screen.getByTestId("header");
+  expect(header).toBeInTheDocument();
+
+  const headerElements = screen.getAllByTestId("head-cell");
+  expect(headerElements).toHaveLength(3);
+  expect(headerElements[0]).toHaveAttribute("title", "Tasks");
+  expect(headerElements[1]).toHaveAttribute("title", "Details");
+  expect(headerElements[2]).toHaveAttribute("title", "Category");
 });
