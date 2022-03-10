@@ -54,7 +54,7 @@ const KeywordSearch = ({endpoint, setSearch, search}) => {
     
 
     const handleClick = () => {
-        const searchFor = `&search_by=${searchValue}`
+        const searchFor = searchValue!=="" ? `&search_by=${searchValue}` : ""
         setSearch(searchFor)
         history.push(endpoint+searchFor)
     }
