@@ -15,9 +15,6 @@ import ListOfTasks from "../../containers/ListOfTasks";
 import Container from "@mui/material/Container";
 import KeywordSearch from "../../containers/KeywordSearch";
 
-
-
-
 const useStyles = makeStyles({
   mainContainer: {
     marginTop: "10vh",
@@ -28,38 +25,43 @@ const MainPage = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const { pageID } = useParams();
-  
+
   const [devEndpoint, setDevEndpoint] = useState(false);
   const [search, setSearch] = useState("");
-  const [endpoint, setEndpoint] = useState("")
-
-  const ENDPOINT = "https://toDefine" + pageID;
+  const [endpoint, setEndpoint] = useState("");
 
   const getTasks = async () => {
     try {
-      const response = await axios.get(ENDPOINT);
+      const response = await axios.get(endpoint);
       const data = response.data;
       const count = response.meta.count;
       dispatch(setCountStart(count));
       dispatch(addTasksStart(data));
     } catch {
       setDevEndpoint(true);
-      const mokData = pageID === "&page=2" ? tasksNormalization(mokTasks.data) : tasksNormalization(mokTasks2.data);
+      const mokData =
+        pageID === "&page=2"
+          ? tasksNormalization(mokTasks.data)
+          : tasksNormalization(mokTasks2.data);
       const mokCount = mokTasks.meta.count;
       dispatch(setCountStart(mokCount));
       dispatch(addTasksStart(mokData));
-      console.log("NormalizedData:", tasksNormalization(mokTasks2.data))
+      console.log("NormalizedData:", tasksNormalization(mokTasks2.data));
     }
   };
 
   const tasksNormalization = (data) => {
-    const newArray = []
-    for (let i=0;i<data.length;i++){
-    const entry = {title: data[i].title, detail: data[i].detail, category: data[i].category.name}
-    newArray.push(entry)}
-    return newArray    
-  }
-
+    const newArray = [];
+    for (let i = 0; i < data.length; i++) {
+      const entry = {
+        title: data[i].title,
+        detail: data[i].detail,
+        category: data[i].category.name,
+      };
+      newArray.push(entry);
+    }
+    return newArray;
+  };
 
   useEffect(
     () => {
@@ -70,17 +72,17 @@ const MainPage = () => {
   );
 
   const configListOfTasks = {
-    endpoint, 
+    endpoint,
     setEndpoint,
-    search
-  }
+    search,
+  };
 
   const configSearch = {
     endpoint,
     setEndpoint,
-    search, 
-    setSearch
-  }
+    search,
+    setSearch,
+  };
 
   return (
     <div>
@@ -88,13 +90,12 @@ const MainPage = () => {
 
       <Container className={classes.mainContainer}>
         <Grid container spacing={2}>
-        <Grid item xs={12} >
-            <KeywordSearch  {...configSearch}/>
+          <Grid item xs={12}>
+            <KeywordSearch {...configSearch} />
           </Grid>
-          <Grid item xs={12} >
+          <Grid item xs={12}>
             <ListOfTasks {...configListOfTasks} />
           </Grid>
-          
         </Grid>
       </Container>
     </div>
