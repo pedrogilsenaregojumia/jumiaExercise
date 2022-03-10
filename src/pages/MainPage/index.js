@@ -88,7 +88,7 @@ const MainPage = () => {
     <div>
       <Header devEndpoint={devEndpoint} />
 
-      <Container className={classes.mainContainer}>
+      <Container className={classes.mainContainer} id="container">
         <Grid container spacing={2}>
           <Grid item xs={12}>
             <KeywordSearch {...configSearch} />

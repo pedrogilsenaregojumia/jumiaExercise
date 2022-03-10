@@ -81,7 +81,7 @@ const TableOfTasks = ({ setEndpoint, search }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {tasks.map((item) => (
+          {tasks?.map((item) => (
             <TableRow
               key={item.title}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
