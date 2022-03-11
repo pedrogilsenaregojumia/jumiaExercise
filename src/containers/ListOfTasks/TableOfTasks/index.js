@@ -55,7 +55,7 @@ const TableOfTasks = ({ setEndpoint, search }) => {
 
   return (
     <TableContainer component={Paper} data-testid="table">
-      <Table>
+      <Table id="table-1">
         <TableHead>
           <TableRow data-testid="header">
             <HeadCell
