@@ -5,7 +5,7 @@ describe("renders the homepage", () => {
     cy.visit("/view=full&sort_by=tasks&by_order=desc&per_page=10");
   });
 
-  it("renders correctly", () => {
+  it("renders correctly the homepage", () => {
     cy.get("#container").should("exist");
   });
 
@@ -28,7 +28,7 @@ describe("renders the homepage", () => {
     /* ==== End Cypress Studio ==== */
   });
 
-  it("finds a specific task 'Ir àsassasa compras'", () => {
+  it("finds if a specific task exists anywhere 'Ir àsassasa compras'", () => {
     cy.findByText("Ir àsassasa compras").should("exist");
   });
 
@@ -57,6 +57,32 @@ describe("renders the homepage", () => {
     cy.get("#table-1>tbody>tr:eq(0)>td").should("have.length", 2);
 
     //get the hole table data
-    cy.get("#table-1>tbody>tr").each(() => {});
+    cy.get("#table-1>tbody>tr").each(($row, index, $rows) => {
+      cy.wrap($row).within(() => {
+        cy.get("th").each(($cellData, index, $columns) => {
+          cy.log($cellData.text());
+        });
+        cy.get("td").each(($cellData, index, $columns) => {
+          cy.log($cellData.text());
+        });
+      });
+    });
+  });
+
+  it("check if row 0, column 1, returns 'pessoal' ", () => {
+    cy.get("#table-1>tbody>tr")
+      .eq(0)
+      .within(() => {
+        cy.get("td").eq(1).should("contain.text", "pessoal");
+      });
+  });
+
+  it("check if task 'Ir àsassasa compras' has the category 'pessoal' ", () => {
+    cy.get("#table-1>tbody>tr")
+      .contains("Ir àsassasa compras")
+      .parent()
+      .within(() => {
+        cy.get("td").eq(1).should("contain.text", "pessoal");
+      });
   });
 });
